@@ -1,0 +1,323 @@
+/* Variables */
+
+:root {
+    --font-family: 'Source Sans Pro', serif;
+    --color-white: #FFFFFF;
+    --color-dark: #071629;
+    --color-gray: #979797;
+    --color-primary: #C271FF;
+}
+
+
+/* Font-Icons  */
+
+@font-face {
+    font-family: 'holberton_school-icon';
+    src: url('fonts/holberton_school-icon.eot');
+    src: url('fonts/holberton_school-icon.eot') format('embedded-opentype'), url('fonts/holberton_school-icon.ttf') format('truetype'), url('fonts/holberton_school-icon.woff') format('woff'), url('fonts/holberton_school-icon.svg') format('svg');
+}
+
+.icon:before {
+    font-family: "holberton_school-icon", sans-serif !important;
+}
+
+.leftArrow:before {
+    content: "\e903";
+    font-size: 8rem;
+}
+
+.rightArrow:before {
+    content: "\e902";
+    font-size: 8rem;
+}
+
+.leftArrowVideo:before {
+    content: "\e903";
+    font-size: 8rem;
+    color: black;
+}
+
+.rightArrowVideo:before {
+    content: "\e902";
+    font-size: 8rem;
+    color: black;
+}
+
+
+/* Base  */
+
+body {
+    font-family: var(--font-family) !important;
+}
+
+.off-screen {
+    left: -100vw;
+    position: absolute;
+}
+
+.h5 {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
+/* Buttons */
+
+.btn,
+.btn:hover,
+.btn:focus {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.btn:hover,
+.btn:focus {
+    opacity: 0.9;
+}
+
+.btn-shadow {
+    box-shadow: 0 0 10px 5px rgba(56, 56, 56, 0.813);
+}
+
+
+/* NavLinks */
+
+li a {
+    color: var(--color-dark);
+}
+
+li a:hover,
+li a:focus {
+    color: var(--color-primary) !important;
+    text-decoration: none;
+}
+
+.current:after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--color-white);
+}
+
+.navbar-icon:before {
+    font-family: 'holberton_school-icon';
+    content: "\e911";
+    color: var(--color-white);
+}
+
+.navbar-toggler {
+    font-size: 2.25rem;
+    top: 3rem;
+}
+
+
+/* Colors */
+
+.purple-bg {
+    background-color: var(--color-primary) !important;
+}
+
+.dark-bg {
+    background-color: var(--color-dark);
+}
+
+.purple {
+    color: var(--color-primary);
+}
+
+.border-gray {
+    border-color: var(--color-gray) !important;
+}
+
+
+/* Background */
+
+.homepage {
+    background-image: url('images/pic_1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+.pricing {
+    background-image: url('images/pic_2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+.courses {
+    background-image: url('images/pic_3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+
+/* Carousels */
+
+.carousel-avatar {
+    margin-top: 2rem;
+}
+
+.phone {
+    display: block;
+}
+
+.tablet {
+    display: none;
+}
+
+.desktop {
+    display: none;
+}
+
+
+/* Video Carousel */
+
+.pl-6 {
+    padding-left: 3.5rem;
+    padding-right: 3rem;
+}
+
+.mins {
+    padding-left: 5rem;
+}
+
+.videoLeft {
+    top: 8.5rem;
+    padding-right: 1rem;
+    padding-left: auto;
+}
+
+.videoRight {
+    top: 8.5rem;
+    padding-left: 1rem;
+    padding-right: auto;
+}
+
+.search {
+    color: white;
+    font-size: 1.75rem;
+    opacity: .8;
+}
+
+::placeholder {
+    color: lightgrey;
+    font-size: 1.75rem;
+    opacity: .6;
+}
+
+.play {
+    height: 125px;
+    width: 125px;
+}
+
+
+/* Footer */
+
+.fb-icon:before {
+    font-family: 'holberton_school-icon';
+    content: "\e908";
+    color: var(--color-white);
+}
+
+.twitter-icon:before {
+    font-family: 'holberton_school-icon';
+    content: "\e90f";
+    color: var(--color-white);
+}
+
+.insta-icon:before {
+    font-family: 'holberton_school-icon';
+    content: "\e90a";
+    color: var(--color-white);
+}
+
+.search:before {
+    font-family: 'holberton_school-icon';
+    content: "\e912";
+    color: var(--color-dark);
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .carousel-helper {
+        margin-left: 5.7rem;
+    }
+    .carousel-avatar {
+        margin-top: 0;
+    }
+    .phone {
+        display: none;
+    }
+    .tablet {
+        display: block;
+    }
+    .desktop {
+        display: none;
+    }
+    .pl-6 {
+        padding-left: 1rem;
+    }
+    .pl-6-left {
+        padding-left: 1rem;
+    }
+    .tabletHelper {
+        padding-left: 5.15rem;
+    }
+    .rowHelper {
+        padding-left: 6rem;
+    }
+    .play {
+        height: 90px;
+        width: 90px;
+        margin-top: 1.25rem !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-md-3 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 21%;
+        max-width: 25%;
+    }
+    .carousel-avatar {
+        width: 165px;
+        margin-top: 0;
+    }
+    .carousel-helper {
+        margin-left: 9.5rem;
+    }
+    .pl-6 {
+        padding-left: 1.0rem;
+    }
+    .pl-6-left {
+        padding-left: 1.75rem;
+    }
+    .videoLeft {
+        left: -8rem;
+    }
+    .videoRight {
+        right: -7.5rem;
+    }
+    .phone {
+        display: none;
+    }
+    .tablet {
+        display: none;
+    }
+    .desktop {
+        display: block;
+    }
+    .play {
+        height: 90px;
+        width: 90px;
+        margin-top: 2.25rem !important;
+    }
+}
