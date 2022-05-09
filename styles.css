@@ -193,6 +193,32 @@ li a:focus {
     100% { transform: rotate(360deg); }
 }
 
+.pop-vids-4 .carousel-inner .carousel-item-right.active,
+.pop-vids-4 .carousel-inner .carousel-item-next {
+  transform: translateX(25%) !important;
+}
+
+.pop-vids-4 .carousel-inner .carousel-item-left.active,
+.pop-vids-4 .carousel-inner .carousel-item-prev {
+  transform: translateX(-25%) !important;
+}
+
+.pop-vids-2 .carousel-inner .carousel-item-right.active,
+.pop-vids-2 .carousel-inner .carousel-item-next {
+  transform: translateX(50%) !important;
+}
+
+.pop-vids-2 .carousel-inner .carousel-item-left.active,
+.pop-vids-2 .carousel-inner .carousel-item-prev {
+  transform: translateX(-50%) !important;
+}
+
+.pop-vids-4 .carousel-inner .carousel-item-right,
+.pop-vids-4 .carousel-inner .carousel-item-left,
+.pop-vids-2 .carousel-inner .carousel-item-right,
+.pop-vids-2 .carousel-inner .carousel-item-left {
+  transform: translateX(0) !important;
+}
 
 /* Video Carousel */
 
@@ -203,18 +229,6 @@ li a:focus {
 
 .mins {
     padding-left: 5rem;
-}
-
-.videoLeft {
-    top: 8.5rem;
-    padding-right: 1rem;
-    padding-left: auto;
-}
-
-.videoRight {
-    top: 8.5rem;
-    padding-left: 1rem;
-    padding-right: auto;
 }
 
 .search {
@@ -233,7 +247,59 @@ li a:focus {
     height: 125px;
     width: 125px;
 }
+.pop-vids-4, .pop-vids-2 {
+	display: none;
+    width: 80%;
+}
+.pop-vids-1 {
+	display: flex;
+}
 
+.card {
+    max-width: 255px;
+}
+
+.play-btn {
+    position: absolute;
+    top: 45px;
+    left: 95.5px;
+}
+
+.card small {
+    font-size: 14px;
+}
+
+.card-header {
+	background-color: white!important;
+	border-bottom: none!important;
+	padding: 0!important;
+}
+
+.popularVids .pop-vids-4 .carousel-inner {
+	padding-left: 10rem;
+	padding-right: 10rem;
+}
+
+.videoLeft {
+	left: -4rem;
+}
+
+.videoRight {
+	right: -4rem;
+}
+
+.videoLeft::after {
+	left: -4rem;
+}
+.desktop {
+	display: none;
+}
+.tablet {
+	display: none;
+}
+.phone {
+	display: block;
+}
 
 /* Footer */
 
@@ -268,15 +334,6 @@ li a:focus {
     .carousel-avatar {
         margin-top: 0;
     }
-    .phone {
-        display: none;
-    }
-    .tablet {
-        display: block;
-    }
-    .desktop {
-        display: none;
-    }
     .pl-6 {
         padding-left: 1rem;
     }
@@ -294,6 +351,27 @@ li a:focus {
         width: 90px;
         margin-top: 1.25rem !important;
     }
+	.pop-vids-2 {
+        display: flex !important;
+    }
+	.pop-vids-1 {
+		display: none !important;
+	}
+	.videoLeft {
+		left: -4rem;
+	}
+	.videoRight {
+		right: -4rem;
+	}
+	.desktop {
+		display: none;
+	}
+	.tablet {
+		display: flex;
+	}
+	.phone {
+		display: none;
+	}
 }
 
 @media (min-width: 768px) {
@@ -315,24 +393,30 @@ li a:focus {
     .pl-6-left {
         padding-left: 1.75rem;
     }
-    .videoLeft {
-        left: -8rem;
-    }
-    .videoRight {
-        right: -7.5rem;
-    }
-    .phone {
-        display: none;
-    }
-    .tablet {
-        display: none;
-    }
-    .desktop {
-        display: block;
-    }
     .play {
         height: 90px;
         width: 90px;
         margin-top: 2.25rem !important;
     }
+	.pop-vids-4 {
+        display: flex !important;
+    }
+	.pop-vids-1 {
+		display: none !important;
+	}
+	.videoLeft {
+		left: 0;
+	}
+	.videoRight {
+		right: 0;
+	}
+	.desktop {
+		display: flex;
+	}
+	.tablet {
+		display: none;
+	}
+	.phone {
+		display: none;
+	}
 }

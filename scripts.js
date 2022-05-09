@@ -2,18 +2,6 @@ window.onload = () => {
   loadAllCarousels();
 };
 
-// const loadAllCarousels = () => {
-//   if ($('.quotes .carousel-inner').length) {
-//     $.get('https://smileschool-api.hbtn.info/quotes', (data) => {
-//       const commentList = [];
-//       data.forEach((comment) => {
-//         commentList.push(createComment(comment));
-//       });
-//       setCarouselItems(commentList, 1, $('.quotes .carousel-inner'));
-//     });
-//   }
-// };
-
 const loadAllCarousels = () => {
   if ($('.quotes .carousel-inner').length) {
     $.ajax({
@@ -29,6 +17,41 @@ const loadAllCarousels = () => {
           commentList.push(createComment(comment));
         });
         setCarouselItems(commentList, 1, $('.quotes .carousel-inner'));
+      },
+      complete: function () {
+        $('.loader').hide();
+      },
+    });
+  }
+
+  if ($('.popularVids .pop-vids-4 .carousel-inner').length) {
+    $.ajax({
+      url: 'https://smileschool-api.hbtn.info/popular-tutorials',
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function () {
+        $('.loader').show();
+      },
+      success: (data) => {
+        const cardList = [];
+        data.forEach((card) => {
+          cardList.push(createCard(card));
+        });
+        setCarouselItems(
+          cardList,
+          4,
+          $('.popularVids .pop-vids-4 .carousel-inner')
+        );
+        setCarouselItems(
+          cardList,
+          2,
+          $('.popularVids .pop-vids-2 .carousel-inner')
+        );
+        setCarouselItems(
+          cardList,
+          1,
+          $('.popularVids .pop-vids-1 .carousel-inner')
+        );
       },
       complete: function () {
         $('.loader').hide();
@@ -52,11 +75,43 @@ const createComment = (comment) => {
   return cmnt;
 };
 
+const createCard = (info) => {
+  const card = $('<div class="card border-0 text-dark"></div>')[0];
+  let cardContent = `<div class="card-header">
+	<img src="${info.thumb_url}" width="255" height="154">
+	<img class="play-btn" src="images/play.png" width="64" height="64">
+  </div>
+  <div class="card-body pl-3 py-2">
+	<h5 class="card-title mt-2"><b>${info.title}</b></h5>
+	<small class="card-text">${info['sub-title']}</small>
+	<div class="d-flex flex-row align-items-center mt-3">
+	  <img class="rounded-circle" src="${info.author_pic_url}" width="30" height="30">
+	  <small class="text-purple ml-2"><b>${info.author}</b></small>
+	</div>
+	<div class="d-flex flex-row align-items-center justify-content-between mt-2">
+	  <div class="d-flex justify-content-between align-items-center w-50">`;
+  for (var i = 0; i < info.star; ++i) {
+    cardContent += `<img src="images/star_on.png" width="15" height="15">`;
+  }
+  while (i++ < 5) {
+    cardContent += `<img src="images/star_off.png" width="15" height="15">`;
+  }
+  cardContent += `</div>
+	  <small class="text-purple"><b>${info.duration}</b></small>
+	</div>
+  </div>`;
+  $(card).append(cardContent);
+  return card;
+};
+
 const setCarouselItems = (list, items, carousel) => {
   for (let i = 0; i < list.length; i++) {
     const carouselItem = $('<div class="carousel-item">')[0];
 
     if ($(list[0]).hasClass('card')) {
+      var flexSetup = $(
+        '<div class="d-flex flex-row justify-content-around"></div>'
+      )[0];
     } else {
       var flexSetup = document.createDocumentFragment();
     }
