@@ -279,6 +279,10 @@ li a:focus {
 	padding-left: 10rem;
 	padding-right: 10rem;
 }
+.latestVids .pop-vids-4 .carousel-inner {
+	padding-left: 10rem;
+	padding-right: 10rem;
+}
 
 .videoLeft {
 	left: -4rem;

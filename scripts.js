@@ -58,6 +58,40 @@ const loadAllCarousels = () => {
       },
     });
   }
+  if ($('.latestVids .pop-vids-4 .carousel-inner').length) {
+    $.ajax({
+      url: 'https://smileschool-api.hbtn.info/latest-videos',
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function () {
+        $('.loader').show();
+      },
+      success: (data) => {
+        const cardList = [];
+        data.forEach((card) => {
+          cardList.push(createCard(card));
+        });
+        setCarouselItems(
+          cardList,
+          4,
+          $('.latestVids .pop-vids-4 .carousel-inner')
+        );
+        setCarouselItems(
+          cardList,
+          2,
+          $('.latestVids .pop-vids-2 .carousel-inner')
+        );
+        setCarouselItems(
+          cardList,
+          1,
+          $('.latestVids .pop-vids-1 .carousel-inner')
+        );
+      },
+      complete: function () {
+        $('.loader').hide();
+      },
+    });
+  }
 };
 
 const createComment = (comment) => {
