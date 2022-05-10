@@ -20,7 +20,7 @@ const loadAllCarousels = () => {
       },
       complete: function () {
         $('.loader').hide();
-      },
+      }
     });
   }
 
@@ -55,7 +55,7 @@ const loadAllCarousels = () => {
       },
       complete: function () {
         $('.loader').hide();
-      },
+      }
     });
   }
   if ($('.latestVids .pop-vids-4 .carousel-inner').length) {
@@ -89,7 +89,7 @@ const loadAllCarousels = () => {
       },
       complete: function () {
         $('.loader').hide();
-      },
+      }
     });
   }
 
@@ -169,55 +169,53 @@ const setCarouselItems = (list, items, carousel) => {
 };
 
 const getCourses = (target) => {
-  // clear out existing entries and show loader
   $('.results .loader').show();
-  // console.log('target', target);
   $(target).empty();
-  // grab all search parameters for api
+
   let keywords = $('#searchInput').val();
   let topic = $('#topicSelect').val();
   let sortBy = $('#exampleFormControlSelect1').val();
-  // console.log('key:', keywords, 'top:', topic, 'sort:', sortBy);
-  // set base api url
   let apiUrl = 'https://smileschool-api.hbtn.info/courses?';
-  // fill with search parameters if present
+
   if (keywords) {
     apiUrl += `&q=${keywords}`;
   }
+
   if (topic) {
     apiUrl += `&topic=${topic}`;
   }
+
   if (sortBy) {
     apiUrl += `&sort=${sortBy}`;
   }
-  // console.log(apiUrl);
+
   $.get(apiUrl, (data) => {
-    // console.log('coursesData', data);
     const cardList = [];
+
     for (let item of data.courses) {
       cardList.push(createCard(item));
     }
-    // console.log('coursesList', cardList);
+
     let topics = $('.form-control#topicSelect')[0];
     let sorts = $('.form-control#exampleFormControlSelect1')[0];
-    // check if the options are already there, if not fill them up!
+
     if (!topics.childElementCount) {
-      // console.log('firing topics');
       for (let option of data.topics) {
         $(topics).append(createOption(option));
       }
     }
+
     if (!sorts.childElementCount) {
-      // console.log('firing sorts');
       for (let option of data.sorts) {
         $(sorts).append(createOption(option));
       }
     }
-    // add event listeners
+
     if (!$(topics).hasClass('listener')) {
       $(topics).addClass('listener');
       $(topics).on('change', () => $(topics).closest('form').submit());
     }
+
     if (!$(sorts).hasClass('listener')) {
       $(sorts).addClass('listener');
       $(sorts).on('change', () => $(sorts).closest('form').submit());
@@ -228,10 +226,10 @@ const getCourses = (target) => {
   });
 };
 
-function createOption(info) {
+function createOption(option) {
   return $(
-    `<option class="bg-white text-body" value="${info}">${capFirstLtr(
-      info
+    `<option class="bg-white text-body" value="${option}">${capFirstLtr(
+      option
     )}</option>`
   )[0];
 }
@@ -246,13 +244,11 @@ function capFirstLtr(string) {
 }
 
 function fillCourses(cardList, target) {
-  // console.log('cardList', cardList);
-  // console.log('target', target);
   for (card of cardList) {
-    var wrapper = $(
+    var wrapDiv = $(
       '<div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center my-2">'
     )[0];
-    wrapper.append(card);
-    target.append(wrapper.cloneNode(true));
+    wrapDiv.append(card);
+    target.append(wrapDiv.cloneNode(true));
   }
 }
