@@ -304,6 +304,48 @@ li a:focus {
 .phone {
 	display: block;
 }
+.search-bar {
+    background: var(--color-primary);
+}
+
+.input-group-append .search-icon {
+    font-family: 'holberton_school-icon' !important;
+    font-size: 20px;
+}
+
+.search-bar .search-icon:before {
+    content: '\e912';
+}
+
+.search-bar input,
+.search-bar select,
+.input-group-append,
+input[type=search]::placeholder {
+    background: var(--color-primary);
+    color: #FFF;
+    outline: 0;
+    border: none;
+	opacity: .8;
+	font-size: 22px;
+}
+
+.search-bar input:focus,
+.search-bar select:focus,
+.input-group-append:focus {
+    background: var(--color-primary);
+    color: #FFF;
+    outline: 0;
+    border: none;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.search-bar label {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
 
 /* Footer */
 
